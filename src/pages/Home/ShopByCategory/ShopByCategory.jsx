@@ -4,10 +4,19 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import { useEffect } from "react";
+import Aos from "aos";
 
 const ShopByCategory = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 2000,
+      mirror: true,
+      once: false,
+    });
+  });
   return (
-    <>
+    <div data-aos="fade-left">
       <div>
         <h1
           className="text-3xl font-bold font-jura ms-8
@@ -111,7 +120,7 @@ const ShopByCategory = () => {
         </SwiperSlide>
         {/* Add more SwiperSlide components as needed */}
       </Swiper>
-    </>
+    </div>
   );
 };
 

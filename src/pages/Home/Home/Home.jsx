@@ -1,5 +1,7 @@
 import FeaturedIn from "../../FeaturedIn/FeaturedIn";
+import ExploreSection from "../ExploreSection/ExploreSection";
 import HomeCarousel from "../HomeCarousel/HomeCarousel";
+import MarqueeSection from "../MarqueeSection/MarqueeSection";
 import ShopByCategory from "../ShopByCategory/ShopByCategory";
 
 const Home = () => {
@@ -10,6 +12,8 @@ const Home = () => {
         <ShopByCategory />
       </div>
       <FeaturedIn />
+      <MarqueeSection />
+      <ExploreSection />
     </div>
   );
 };
