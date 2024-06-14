@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
 
 const ShopByCategory = () => {
   return (
@@ -15,7 +16,29 @@ const ShopByCategory = () => {
           Category
         </h1>
       </div>
-      <Swiper slidesPerView={3} spaceBetween={30} className="mySwiper">
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={10}
+        Pagination={{
+          clickable: true,
+        }}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 50,
+          },
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
         <SwiperSlide>
           <div className="w-full max-w-md space-y-4 rounded-lg bg-white p-5 shadow-lg dark:bg-[#f0e9e9]">
             <img
