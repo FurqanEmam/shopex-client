@@ -1,78 +1,88 @@
 import { useState } from "react";
 
-const accordionData = [
-  {
-    title: "heading",
-    subtitle: "Hi!~ How are you doing?",
-    colorBg: "bg-amber-500",
-    colorBorder: "border-amber-500",
-  },
-  {
-    title: "heading",
-    subtitle: "Hi!~ How are you doing? This is my new",
-    colorBg: "bg-orange-500",
-    colorBorder: "border-orange-500",
-  },
-  {
-    title: "heading",
-    subtitle: "Hi!~ How are you doing?",
-    colorBg: "bg-red-500",
-    colorBorder: "border-red-500",
-  },
-  {
-    title: "heading",
-    subtitle: "Hi!~ How are you doing?",
-    colorBg: "bg-sky-500",
-    colorBorder: "border-sky-500",
-  },
-  {
-    title: "heading",
-    subtitle: "Hi!~ How are you doing?",
-    colorBg: "bg-purple-500",
-    colorBorder: "border-purple-500",
-  },
-];
+export default function AccordionWithIndex() {
+  // question and answer
+  const dataArr = [
+    {
+      title: "How do I create an account?",
+      description:
+        'To create an account, click on the "Sign Up" button and fill out the required information. Once done, you can enjoy the benefits of being a registered member.',
+    },
+    {
+      title: "What is your return policy?",
+      description:
+        "Our return policy allows you to return items within 30 days of purchase. Please visit our returns page for detailed instructions and to initiate a return.",
+    },
+    {
+      title: "Can I change my shipping address?",
+      description:
+        "Yes, you can change your shipping address before your order is shipped. Go to your account settings and update the shipping information accordingly.",
+    },
+    {
+      title: "Are there any discounts for loyal customers?",
+      description:
+        "We appreciate our loyal customers! Stay tuned for exclusive discounts, promotions, and special offers available to members of our loyalty program.",
+    },
+  ];
 
-export default function VerticalAccordion() {
-  // Toggle State and Function
-  const [isActive, setIsActive] = useState(0);
+  // toggle state and function
+  const [isOpen, setIsOpen] = useState(null);
   const handleToggle = (idx) => {
-    setIsActive((prevIdx) => (prevIdx === idx ? null : idx));
+    setIsOpen((prevIdx) => (prevIdx === idx ? null : idx));
   };
 
   return (
-    <div className="mx-auto my-10 flex w-fit rotate-90 shadow-md min-h-[220px] md:min-h-[300px] md:rotate-0 ">
-      {accordionData?.map((data, idx) => (
-        <div key={idx} className="flex">
-          {/* toggle item */}
-          <button
-            onClick={() => handleToggle(idx)}
-            className={` flex h-full w-fit items-end border-b-8 bg-white pb-10 dark:bg-[#323238] ${data?.colorBorder} shadow-[2px_2px_5px_#00000083]`}
-          >
-            <div
-              className={`size-10 text-white md:size-16 ${data?.colorBg} relative flex items-center justify-center `}
-            >
-              <span
-                className={`h-0 w-0 ${data?.colorBorder} dark:${data?.colorBorder} absolute left-8 -z-10 hidden  rotate-[225deg] rounded-lg border-b-[60px] border-r-[60px] border-r-transparent md:block`}
-              ></span>
-              <span className="-rotate-90 md:rotate-0">0{idx + 1}</span>
-            </div>
-          </button>
-          {/* container */}
+    <div className="flex w-full justify-center">
+      <div className=" max-w-[550px] cursor-pointer space-y-6 py-16">
+        {/* mapping each accordion  */}
+        {dataArr.map((data, idx) => (
           <div
-            className={`grid place-content-center ${
-              isActive === idx
-                ? "opacity-1 scale-1  w-[220px] md:w-56   px-5"
-                : "w-0 scale-0 opacity-0"
-            } -z-20  -rotate-90 bg-white  text-black duration-300 ease-in-out dark:bg-[#18181B] md:rotate-0`}
+            key={idx}
+            onClick={() => handleToggle(idx)}
+            className="flex items-center"
           >
-            <h2 className="font-black dark:text-white lg:text-2xl ">
-              {data?.title}
-            </h2>
-            <p className="dark:text-white/60 ">{data?.subtitle}</p>
+            {/* the index div  */}
+            <div className="flex size-16 select-none items-center justify-center rounded-md bg-[#cf3732] font-sans text-2xl font-semibold text-white">
+              <span>0{idx + 1}</span>
+            </div>
+
+            <div className="relative h-[2px] w-10 bg-[#700f0b]">
+              <span className="absolute -left-2 -top-[5px] z-40 h-3 w-3 rounded-full border-2 border-[#7a1717] bg-white"></span>
+              <span className="h-1 w-10 bg-[#8a0c0c]"></span>
+              <span
+                className={`absolute -right-2 -top-[5px] z-40 h-3 w-3 rounded-full border-2 ${
+                  isOpen === idx
+                    ? "border-[#726435] bg-white delay-100"
+                    : "border-transparent"
+                }`}
+              ></span>
+            </div>
+
+            {/* main accordion div  */}
+            <div className="text-center">
+              <div className="relative max-w-[450px] border-t-[12px] border-[#681515] bg-sky-50 p-3 shadow-md">
+                <span className="absolute right-0 top-0 h-0 w-0 border-b-[40px] border-r-[40px] border-b-transparent border-r-[#752020]"></span>
+                <h1 className="select-none text-lg text-[#417235]">
+                  {data.title}
+                </h1>
+              </div>
+              <div
+                className={`grid overflow-hidden text-slate-600 transition-all duration-300 ease-in-out ${
+                  isOpen === idx
+                    ? "grid-rows-[1fr] opacity-100"
+                    : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <div className="max-w-[450px] bg-[#5e2725] p-6 text-sm text-white">
+                    {data.description}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
