@@ -1,8 +1,11 @@
 import FeaturedIn from "../../FeaturedIn/FeaturedIn";
+import AboutUs from "../AboutUs/AboutUs";
 import ExploreSection from "../ExploreSection/ExploreSection";
 import HomeCarousel from "../HomeCarousel/HomeCarousel";
 import MarqueeSection from "../MarqueeSection/MarqueeSection";
 import ShopByCategory from "../ShopByCategory/ShopByCategory";
+import SubscribeEmail from "../SubscribeEmail/SubscribeEmail";
+import VerticalAccordion from "../VerticalAccordion/VerticalAccordion";
 
 const Home = () => {
   return (
@@ -14,6 +17,9 @@ const Home = () => {
       <FeaturedIn />
       <MarqueeSection />
       <ExploreSection />
+      <AboutUs />
+      <VerticalAccordion />
+      <SubscribeEmail />
     </div>
   );
 };

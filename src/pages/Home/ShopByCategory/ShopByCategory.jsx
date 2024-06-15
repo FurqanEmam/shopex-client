@@ -11,12 +11,12 @@ const ShopByCategory = () => {
   useEffect(() => {
     Aos.init({
       duration: 2000,
-      mirror: true,
       once: false,
+      mirror: true,
     });
   });
   return (
-    <div data-aos="fade-left">
+    <div data-aos="zoom-out">
       <div>
         <h1
           className="text-3xl font-bold font-jura ms-8
