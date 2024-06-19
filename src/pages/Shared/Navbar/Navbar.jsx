@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   const navigationLink = (
     <>
@@ -13,6 +15,9 @@ const Navbar = () => {
 
       <li className="hover:bg-red-500 hover:duration-1000 ">
         <a>CONTROLLER</a>
+      </li>
+      <li className="hover:bg-red-500 hover:duration-1000 ">
+        <a>DOWNLOAD</a>
       </li>
     </>
   );
@@ -57,8 +62,11 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <button className="group relative z-50 h-14 w-32 overflow-hidden border-y-4 border-green-300 bg-black text-xl text-white font-bold duration-500">
-            Sign In
+          <Link
+            to="/signin"
+            className="group relative z-50 h-14 w-32 overflow-hidden border-y-4 border-green-300 bg-black text-xl text-white font-bold duration-500 text-center"
+          >
+            <p className="text-center">Sign In</p>
             <span className="absolute inset-0 z-10 flex items-center justify-center text-black opacity-0 duration-100 ease-out group-hover:opacity-100 group-hover:duration-1000 font-bold">
               ShopeX
             </span>
@@ -66,7 +74,7 @@ const Navbar = () => {
             <span className="absolute inset-0 translate-y-full bg-red-500 group-hover:translate-y-0 group-hover:duration-1000"></span>
             <span className="absolute inset-0 translate-x-full bg-sky-300 delay-100 duration-1000 group-hover:translate-x-0 group-hover:delay-300"></span>
             <span className="absolute inset-0 -translate-x-full bg-green-300 delay-100 duration-1000 group-hover:translate-x-0 group-hover:delay-300"></span>
-          </button>
+          </Link>
         </div>
       </div>
     </div>
