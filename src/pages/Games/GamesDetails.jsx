@@ -1,6 +1,14 @@
-import React from "react";
+import Aos from "aos";
+import React, { useEffect } from "react";
 
 const GamesDetails = ({ details }) => {
+  useEffect(() => {
+    Aos.init({
+      duration: 2000,
+      mirror: true,
+      once: false,
+    });
+  });
   const {
     gameName,
     gameMaker,
@@ -13,7 +21,7 @@ const GamesDetails = ({ details }) => {
   } = details;
   return (
     <div>
-      <div className="my-5">
+      <div data-aos="flip-right" className="my-5">
         <div className="max-w-80 space-y-4 rounded-lg bg-white p-5 shadow-lg dark:bg-[#ffffff]">
           <div className="flex flex-col space-y-1.5">
             <h3 className="text-2xl font-semibold ">{gameName}</h3>

@@ -6,6 +6,7 @@ import SignIn from "../pages/SignIn/SignIn";
 import BlogPage from "../pages/BlogPage/BlogPage";
 import Games from "../pages/Games/Games";
 import Controller from "../pages/Controller/Controller";
+import Download from "../pages/Download/Download";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/controller",
         element: <Controller />,
+      },
+      {
+        path: "/download",
+        element: <Download> </Download>,
       },
     ],
   },

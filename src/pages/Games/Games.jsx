@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GamesDetails from "./GamesDetails";
+import Aos from "aos";
 
 const Games = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 2000,
+      mirror: true,
+      once: false,
+    });
+  });
+
   const gamesDetails = [
     {
       id: 1,
@@ -147,10 +156,14 @@ const Games = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div data-aos="fade-right" className="max-w-7xl mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
         {gamesDetails.map((details) => (
-          <GamesDetails key={details.id} details={details}></GamesDetails>
+          <GamesDetails
+            data-aos="flip-right"
+            key={details.id}
+            details={details}
+          ></GamesDetails>
         ))}
       </div>
     </div>
