@@ -1,7 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+
 const SignInUi = () => {
+  // switching login and signup pages
+
   const [register, setRegister] = useState(false);
+
+  // getting createUser from AuthContext using useContext hook
+  const { createUser, signInUser } = useContext(AuthContext);
+
+  // handleing signUp/Register form
+
   const handleSignUp = (event) => {
     event.preventDefault();
     console.log(event);
@@ -11,6 +21,27 @@ const SignInUi = () => {
     const email = form.reg_email.value;
     const password = form.reg_password.value;
     console.log(name, email, password);
+
+    createUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
+
+  const handleLogIn = (event) => {
+    event.preventDefault();
+    console.log(event);
+    const form = event.target;
+    console.log(form);
+    const email = form.login_email.value;
+    const password = form.login_password.value;
+    console.log(email, password);
   };
   return (
     <div className="font-jura font-black">
@@ -168,6 +199,7 @@ const SignInUi = () => {
           className={`p-8 w-full mr-0 ml-auto duration-500 ${
             register ? "lg:translate-x-full hidden lg:block" : ""
           }`}
+          onSubmit={handleLogIn}
         >
           <h1 className="backdrop-blur-sm text-2xl lg:text-4xl pb-4">Login</h1>
           <div className="space-y-5">
@@ -177,6 +209,7 @@ const SignInUi = () => {
             <input
               id="_email"
               type="email"
+              name="login_email"
               placeholder="example@example.com"
               className="p-3 block w-full outline-none border rounded-md invalid:border-red-700 valid:border-black"
             />
@@ -186,6 +219,7 @@ const SignInUi = () => {
             <input
               id="_password"
               type="password"
+              name="login_password"
               placeholder=".............."
               min={5}
               className="p-3 block w-full outline-none border rounded-md invalid:border-red-700 valid:border-black"
@@ -194,7 +228,7 @@ const SignInUi = () => {
           {/* button type will be submit for handling form submission*/}
 
           <button
-            type="button"
+            type="submit"
             className="py-2 px-5 mb-4 mx-auto mt-8 font-bold text-xl  shadow-lg before:block before:-left-1 before:-top-1 before:bg-black before:absolute before:h-0 before:w-0 before:hover:w-[100%] before:hover:h-[100%]  before:duration-500 before:-z-40 after:block after:-right-1 after:-bottom-1 after:bg-black after:absolute after:h-0 after:w-0 after:hover:w-[100%] after:hover:h-[100%] after:duration-500 after:-z-40 bg-white relative inline-block"
           >
             Submit

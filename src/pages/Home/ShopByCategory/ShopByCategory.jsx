@@ -16,7 +16,7 @@ const ShopByCategory = () => {
     });
   });
   return (
-    <div data-aos="zoom-out">
+    <div data-aos="fade-up-right">
       <div>
         <h1
           className="text-3xl font-bold font-jura ms-8
@@ -28,7 +28,7 @@ const ShopByCategory = () => {
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
-        Pagination={{
+        pagination={{
           clickable: true,
         }}
         breakpoints={{

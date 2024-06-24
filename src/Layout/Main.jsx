@@ -4,13 +4,17 @@ import Footer from "../pages/Shared/Footer/Footer";
 
 const Main = () => {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <div>
         <Navbar />
       </div>
 
-      <Outlet />
-      <Footer />
+      <div className="flex-grow">
+        <Outlet />
+      </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -33,7 +33,7 @@ export default function AccordionWithIndex() {
 
   return (
     <div className="flex w-full justify-center">
-      <div className=" max-w-[550px] cursor-pointer space-y-6 py-16">
+      <div className="max-w-[650px] sm:max-w-[350px] cursor-pointer space-y-6 py-16">
         {/* mapping each accordion  */}
         {dataArr.map((data, idx) => (
           <div

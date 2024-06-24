@@ -1,23 +1,28 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
   const navigationLink = (
     <>
       <li className="hover:bg-red-500 hover:duration-1000 ">
-        <a>HOME</a>
+        <Link to="/">HOME</Link>
       </li>
       <li className="hover:bg-red-500 hover:duration-1000">
-        <a href="">BLOGS</a>
+        <Link to="/blogs" href="">
+          BLOGS
+        </Link>
       </li>
       <li className="hover:bg-red-500 hover:duration-1000 ">
-        <a>GAMES</a>
+        <Link to="/games">GAMES</Link>
       </li>
 
       <li className="hover:bg-red-500 hover:duration-1000 ">
-        <a>CONTROLLER</a>
+        <Link to="controller">CONTROLLER</Link>
       </li>
       <li className="hover:bg-red-500 hover:duration-1000 ">
-        <a>DOWNLOAD</a>
+        <Link to="/download">DOWNLOAD</Link>
       </li>
     </>
   );
@@ -61,6 +66,7 @@ const Navbar = () => {
             {navigationLink}
           </ul>
         </div>
+
         <div className="navbar-end">
           <Link
             to="/signin"
