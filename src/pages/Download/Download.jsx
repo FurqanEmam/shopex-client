@@ -7,5 +7,4 @@ const Download = () => {
     </div>
   );
 };
-
 export default Download;
